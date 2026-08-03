@@ -1,0 +1,12 @@
+# Install CUDA-compatible builds of these packages for the target machine.
+torch==2.8.0
+accelerate==1.11.0
+datasets==3.6.0
+deepspeed==0.18.2
+flash-attn==2.8.3
+peft==0.17.1
+pyarrow==23.0.1
+safetensors==0.5.3
+transformers==4.57.1
+trl==0.26.0
+vllm==0.11.0
