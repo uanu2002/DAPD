@@ -48,6 +48,30 @@ bash scripts/train_reasoning.sh
 
 The default launcher uses four processes and an effective batch size of 32. Checkpoints are saved every 50 optimizer steps as standard PEFT adapters.
 
+## Performance
+
+The main comparison uses task-specific Qwen3-4B models. The overall score is
+the unweighted mean over the six reported benchmarks.
+
+| Method | AIME24 | AIME25 | HMMT25 | LCB v5 | BFCL v3 | IFBench | Avg. |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Base | 75.56 | 65.56 | 42.50 | 52.11 | 61.38 | 29.67 | 54.46 |
+| OPSD | 76.67 | 67.78 | 43.33 | 52.26 | 61.32 | 30.67 | 55.34 |
+| **DAPD** | **77.22** | **72.22** | **46.39** | **53.31** | **61.91** | **33.00** | **57.34** |
+
+For reasoning, Avg@12 is the unweighted mean of AIME24, AIME25, and HMMT25.
+
+| Scale | Base | OPSD | **DAPD** | DAPD gain over OPSD |
+| --- | ---: | ---: | ---: | ---: |
+| 1.7B | 36.85 | 42.04 | **43.98** | +1.94 |
+| 4B | 61.20 | 62.59 | **65.28** | +2.69 |
+| 8B | 65.00 | 65.00 | **67.41** | +2.41 |
+| 14B | 68.80 | 68.89 | **70.93** | +2.04 |
+| 32B | 70.00 | 70.28 | **73.06** | +2.78 |
+
+See the [paper](https://arxiv.org/abs/2608.01735) for benchmark protocols and
+additional ablations.
+
 ## Project Structure
 
 ```text
